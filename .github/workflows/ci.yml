@@ -46,6 +46,3 @@ jobs:
                 cd "C:\Users\User\Documents\Ejercicio 2\proyecto_docker_compose_limpio"
                 docker compose pull backend
                 docker compose up -d backend
-
-            - name: desplegar contenedores con docker-compose
-              run: docker-compose up -d
