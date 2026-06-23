@@ -27,6 +27,11 @@ public class testController {
 	public String test(){
 		return "Hola testing CD";
 	}
+
+	@GetMapping(value="/Juan")
+	public String saludoJuan(){
+		return "Hola Juan";
+	}
 	
 	@GetMapping(value="/saludar-2")
 	public String hello2(){
