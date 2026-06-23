@@ -37,3 +37,15 @@ jobs:
               run: docker build -t juandaa542/backend-spring:latest .
             - name: Publicar imagen Docker en Docker Hub
               run: docker push juandaa542/backend-spring:latest
+    deploy-backend:
+        needs: build-backend
+        runs-on: self-hosted
+        steps:
+            - name: Actualizar contenedor backend
+              run: |
+                C:\Users\User\Documents\Ejercicio 2\proyecto_docker_compose_limpio 
+                docker compose pull backend
+                docker compose up -d backend
+
+            - name: desplegar contenedores con docker-compose
+              run: docker-compose up -d
