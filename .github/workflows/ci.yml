@@ -1,0 +1,25 @@
+name: CI Spring Boot Docker Compose
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./test15b
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v3
+      - name: Instalar Java 21
+        uses: docker/java-setup@v3
+        with:
+          distribution: temurin
+          java-version: 21         
+      - name: Compilar Proyecto
+        run: mvn clean package -DskipTests
+      - name: Verificar el JAR generado
+        run: ls -l target/*.jar
+      - name: Construir imagen docker del backend
+        run: docker build -t backend-spring .
